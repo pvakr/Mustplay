@@ -51,7 +51,7 @@ const Footer = () => {
       links: [
         { name: 'Privacy Policy', path: '/privacy' },
         { name: 'Terms of Service', path: '/terms' },
-        { name:  'Eula', path: 'eula' }
+        { name:  'Eula', path: '/eula' }
       ]
     }
   ];
