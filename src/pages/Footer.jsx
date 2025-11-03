@@ -9,7 +9,7 @@ const Footer = () => {
   const socialLinks = [
     {
       name: "Facebook",
-      url: "https://facebook.com", // <-- You can change this to real link
+      url: "/facebook-data-deletion-instructions-url", // <-- You can change this to real link
       icon: <FaFacebook />,
     },
   ];

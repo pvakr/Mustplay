@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import Privacy from "./pages/Privacy"
 import Terms from "./pages/Terms"
 import Eula from "./pages/Eula"
+import FacebookDataDeletion from "./pages/FacebookDataDeletion";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy-policy" element={<Privacy />} />
           <Route path="/terms-and-conditions" element={<Terms />} />
+          <Route path="/facebook-data-deletion-instructions-url" element={<FacebookDataDeletion />} />
           <Route path="/eula" element={<Eula />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
