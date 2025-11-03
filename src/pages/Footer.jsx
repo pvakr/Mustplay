@@ -1,73 +1,68 @@
-
-import { Link } from 'react-router-dom';
-import './Footer.css';
-import mustPlayLogo from '../assets/images/mustplay.png';
-import { Navbar } from 'react-bootstrap';
+import { Link } from "react-router-dom";
+import "./Footer.css";
+import mustPlayLogo from "../assets/images/mustplay.png";
+import { FaFacebook } from "react-icons/fa"; 
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
     {
-      name: 'Instagram',
-      url: '#',
-      icon: '📸'
+      name: "Facebook",
+      url: "https://facebook.com", // <-- You can change this to real link
+      icon: <FaFacebook />,
     },
-    {
-      name: 'Twitter',
-      url: '#',
-      icon: '𝕏'
-    },
-    {
-      name: 'YouTube',
-      url: '#',
-      icon: '📺'
-    },
-    {
-      name: 'Discord',
-      url: '#',
-      icon: '🎮'
-    }
   ];
 
   const footerLinks = [
     {
-      title: 'Game',
+      title: "Game",
       links: [
-        { name: 'Features', path: '/' },
-        { name: 'Screenshots', path: '/' },
-      ]
+        { name: "Features", path: "/" },
+        { name: "Screenshots", path: "/" },
+      ],
     },
     {
-      title: 'Company',
+      title: "Company",
       links: [
-        { name: 'About Us', path: '/about' },
-        { name: 'Contact', path: '/contact' },
-        { name: 'Support', path: '/contact' }
-      ]
+        { name: "About Us", path: "/about" },
+        { name: "Contact", path: "/contact" },
+        { name: "Support", path: "/contact" },
+      ],
     },
     {
-      title: 'Legal',
+      title: "Legal",
       links: [
+<<<<<<< Updated upstream
         { name: 'Privacy Policy', path: '/privacy' },
         { name: 'Terms of Service', path: '/terms' },
         { name:  'Eula', path: '/eula' }
       ]
     }
+=======
+        {
+          name: "Privacy Policy",
+          path: "/privacy-policy",
+        },
+        {
+          name: "Terms of Service",
+          path: "/terms-and-conditions/",
+        },
+        { name: "Eula", path: "/eula" },
+      ],
+    },
+>>>>>>> Stashed changes
   ];
 
   return (
     <footer className="footer">
       <div className="footer-container">
-        {/* Main Footer Content */}
         <div className="footer-content">
-          {/* Logo and Description */}
+          {/* Brand Logo & Description */}
           <div className="footer-brand">
             <Link to="/" className="footer-logo">
               <div className="footer-logo-icon">
-                <span>
-                  <img src={mustPlayLogo}/>
-                </span>
+                <img src={mustPlayLogo} alt="Must Play Games" />
               </div>
               <span className="footer-logo-text">Must Play Games</span>
             </Link>
@@ -76,7 +71,7 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Footer Links */}
+          {/* Footer Links Section */}
           <div className="footer-links">
             {footerLinks.map((section) => (
               <div key={section.title} className="footer-section">
@@ -84,9 +79,17 @@ const Footer = () => {
                 <ul className="footer-section-links">
                   {section.links.map((link) => (
                     <li key={link.name}>
-                      <Link to={link.path} className="footer-link">
-                        {link.name}
-                      </Link>
+                      {link.path.startsWith("http") ? (
+                        // ✅ External Links
+                        <a href={link.path} target="_blank" rel="noopener noreferrer" className="footer-link">
+                          {link.name}
+                        </a>
+                      ) : (
+                        // ✅ Internal Links
+                        <Link to={link.path} className="footer-link">
+                          {link.name}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -94,7 +97,7 @@ const Footer = () => {
             ))}
           </div>
 
-          {/* Social Links */}
+          {/* Social Section */}
           <div className="footer-social">
             <h4 className="footer-section-title">Follow Us</h4>
             <div className="social-links">
@@ -105,9 +108,8 @@ const Footer = () => {
                   className="social-link"
                   target="_blank"
                   rel="noopener noreferrer"
-                  title={social.name}
                 >
-                  <span>{social.icon}</span>
+                  {social.icon}
                 </a>
               ))}
             </div>
@@ -118,15 +120,11 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Footer Bottom */}
+        {/* Bottom Section */}
         <div className="footer-bottom">
           <div className="footer-bottom-content">
-            <p className="footer-copyright">
-              © {currentYear} Must Play Games. All rights reserved.
-            </p>
-            <p className="footer-tagline">
-              Creating games that make people smile since 2014
-            </p>
+            <p>© {currentYear} Must Play Games. All rights reserved.</p>
+            <p className="footer-tagline">Creating games that make people smile since 2014</p>
           </div>
         </div>
       </div>
