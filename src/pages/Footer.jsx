@@ -33,13 +33,6 @@ const Footer = () => {
     {
       title: "Legal",
       links: [
-<<<<<<< Updated upstream
-        { name: 'Privacy Policy', path: '/privacy' },
-        { name: 'Terms of Service', path: '/terms' },
-        { name:  'Eula', path: '/eula' }
-      ]
-    }
-=======
         {
           name: "Privacy Policy",
           path: "/privacy-policy",
@@ -51,7 +44,6 @@ const Footer = () => {
         { name: "Eula", path: "/eula" },
       ],
     },
->>>>>>> Stashed changes
   ];
 
   return (
