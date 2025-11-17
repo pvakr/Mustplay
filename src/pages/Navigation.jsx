@@ -7,14 +7,13 @@ const Navigations = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
-  // Internal routes only — no new tabs
+  // Added VR item (external link)
   const navItems = [
     { path: "/", label: "Home" },
     { path: "/games", label: "Games" },
+    { path: "https://vam.one", label: "VR", external: true },  // << NEW
     { path: "/about", label: "About" },
     { path: "/contact", label: "Contact" },
-    // If you want a smooth scroll section on the same page:
-    // { path: "#features", label: "Features", scrollTo: "features" }
   ];
 
   const isActive = (path) => location.pathname === path;
@@ -22,10 +21,11 @@ const Navigations = () => {
   const handleScrollOrRoute = (e, item) => {
     if (item.scrollTo) {
       e.preventDefault();
-      document.getElementById(item.scrollTo)?.scrollIntoView({ behavior: "smooth" });
+      document
+        .getElementById(item.scrollTo)
+        ?.scrollIntoView({ behavior: "smooth" });
       setIsOpen(false);
     } else {
-      // let <Link> handle routing
       setIsOpen(false);
     }
   };
@@ -51,7 +51,18 @@ const Navigations = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) =>
-              item.scrollTo ? (
+              item.external ? (
+                <a
+                  key={item.label}
+                  href={item.path}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-yellow-300 transition-all duration-300 font-medium relative group"
+                >
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-300 group-hover:w-full transition-all duration-300" />
+                </a>
+              ) : item.scrollTo ? (
                 <a
                   key={item.path}
                   href={item.path}
@@ -68,7 +79,9 @@ const Navigations = () => {
                   key={item.path}
                   to={item.path}
                   className={`text-white hover:text-yellow-300 transition-all duration-300 font-medium relative group ${
-                    isActive(item.path) ? "text-yellow-300 border border-white rounded-full px-4 py-1" : ""
+                    isActive(item.path)
+                      ? "text-yellow-300 border border-white rounded-full px-4 py-1"
+                      : ""
                   }`}
                 >
                   {item.label}
@@ -93,7 +106,17 @@ const Navigations = () => {
           <div className="md:hidden py-4 border-t border-white/10 glass-card-dark rounded-b-2xl mt-2">
             <div className="flex flex-col space-y-4 stagger-animation">
               {navItems.map((item) =>
-                item.scrollTo ? (
+                item.external ? (
+                  <a
+                    key={item.label}
+                    href={item.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white hover:text-yellow-300 transition-colors font-medium p-2 rounded-lg hover:bg-white/10"
+                  >
+                    {item.label}
+                  </a>
+                ) : item.scrollTo ? (
                   <a
                     key={item.path}
                     href={item.path}
